@@ -5,6 +5,7 @@
     } else {
         $meta = $game['zaid1'];
     };
+    if($_GET['go'])
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +41,12 @@
         <h3> Žaidejas <span style="color: red"><?= $meta ?></span>  meta kauliuka </h3>
     </div>
     <div class="d-flex justify-content-center mt-5">
-  <button type="submit" class="btn btn-primary">Ridenti kauliuka</button>
-</div>
+        <form action="?go=1" method="get">
+            <button type="submit" class="btn btn-primary">Ridenti kauliuka</button>
+        </form>
+    </div>
+    <div class="d-flex justify-content-center mt-5">
+        <img style="width: 30px" src="../image/dice-1.svg">
+    </div>
 </body>
 </html>
