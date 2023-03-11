@@ -1,10 +1,11 @@
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    if(!isset($_POST['go'])) {
-        $dice = rand(1,6);
-        header('Location: http://localhost/phpbootstrap/711/zaidimas.php?go='.$dice);
-        die;
-    } else {
+    $dice = rand(1,6);
+    header('Location: http://localhost/phpbootstrap/711/zaidimas.php?go='.$dice);
+    die;
+} 
+if(isset($_GET['go'])) {
+    $dice = $_GET['go'];
         $game = unserialize(file_get_contents(__DIR__ . '/game.ser'));
         if($game['rid2'] < $game['rid1']) {
             $game['rid2']++;
@@ -24,19 +25,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             die;
         }
         die;
-    }
-}
+} else {
+    $dice = 0;
     $game = unserialize(file_get_contents(__DIR__ . '/game.ser'));
     if($game['rid2'] < $game['rid1']) {
         $meta = $game['zaid2'];
     } else {
         $meta = $game['zaid1'];
     };
-    if(isset($_GET['go'])) {
-        $dice = $_GET['go'];
-    } else {
-        $dice = 0;
-    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,7 +81,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             <img style="width: 30px" src="../image/dice-<?= $dice ?>.svg">
         </div>
         <div class="d-flex justify-content-center mt-5">
-        <form action="?go=<?= $dice ?>" method="POST">
+        <form action="?" method="get">
             <button type="submit" class="btn btn-primary">Testi</button>
         </form>
         </div>
