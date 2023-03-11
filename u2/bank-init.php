@@ -23,10 +23,11 @@ function akgen() {
             $dien = rand(1, 28);
         }
     }
+
     if($met > 1999) {
-        $ak[] = rand(3, 4);
-    } else {
         $ak[] = rand(5, 6);
+    } else {
+        $ak[] = rand(3, 4);
     }
     $ak[] = floor(($met % 100) / 10);
     $ak[] = $met % 10;
@@ -54,16 +55,19 @@ function akgen() {
     return implode('', $ak);
 }        
 
-$kk = akgen();
-echo "<br>$kk";
-
 foreach(range(0,14) as $i) {
-$user = [
-    'vardas' => $vard[$i],
-    'pavarde' => $pav[$i],
-    'ak' => 0,
-    'sask_nr' => 0,
-    'id' => 0,
-    'lesos' => 0,
-];
+    $id = json_decode(file_get_contents(__DIR__ . '/id.json'));
+    $id++;
+    file_put_contents(__DIR__ . '/id.json', json_encode($id));
+    $user = [
+        'vardas' => $vard[$i],
+        'pavarde' => $pav[$i],
+        'ak' => akgen(),
+        'sask_nr' => 'LT3306660'.sprintf('%1$011d', $id),
+        'id' => 0,
+        'lesos' => rand(275, 3566),
+    ];
+    $bankas[] = $user;
 }
+$bankas = serialize($bankas);
+file_put_contents(__DIR__ . '/users.ser', $bankas);

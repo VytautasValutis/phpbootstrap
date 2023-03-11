@@ -1,3 +1,9 @@
+<?php
+$bankas = unserialize(file_get_contents(__DIR__ . '/users.ser'));
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,12 +21,36 @@
         </h2>
     </div>
         <div class="ml-4">
-        <a href="#">Sukurti naują sąskaitą</a>
+        <a type="button" class="btn btn-outline-warning" href="http://localhost/phpbootstrap/u2/naujas.php">sukurti nauja saskaita</a>
         </div>
-    <ul>
-        <li>
-            Sarasas
-        </li>
-</ul>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">A.k.</th>
+                <th scope="col">vardas</th>
+                <th scope="col">pavarde</th>
+                <th scope="col">lesos</th>
+            </tr>
+        </thead>
+        <tbody>
+<?php foreach($bankas as $v) : ?>            
+            <tr>
+                <th scope="row"><?= $v['sask_nr'] ?></th>
+                <td><?= $v['ak'] ?></td>
+                <td><?= $v['vardas'] ?></td>
+                <td><?= $v['pavarde'] ?></td>
+                <td><?= $v['lesos'] ?></td>
+                <td><button type="button" class="btn btn-outline-success" >Prideti lesu</button></td>
+                <td><button type="button" class="btn btn-outline-primary" >Nuskaiciuoti lesas</button></td>
+                <td>
+                    <form action="http://localhost/phpProject/u2/pasalinti.php?id=<?= $v['sask_nr'] ?>" method="post">
+                    <button class="btn btn-outline-danger" type="submit">Pasalinti irasa</button> 
+            </form>
+</td>
+            </tr>
+<?php endforeach ?>            
+        </tbody>
+    </table>
 </body>
 </html>
