@@ -1,7 +1,8 @@
 <?php
-$bankas = unserialize(file_get_contents(__DIR__ . '/users.ser'));
-
-
+    $id = json_decode(file_get_contents(__DIR__ . '/id.json'));
+    $id++;
+    file_put_contents(__DIR__ . '/id.json', json_encode($id));
+    $sask_nr = 'LT3306660'.sprintf('%1$011d', $id);
 
 ?>
 <!DOCTYPE html>
@@ -20,38 +21,26 @@ $bankas = unserialize(file_get_contents(__DIR__ . '/users.ser'));
             <img style="width: 30px" src="../image/bank.svg"> Trijų kortų bankelis 
         </h2>
     </div>
-        <div class="ml-4">
-        <a type="button" class="btn btn-outline-warning" href="http://localhost/phpbootstrap/u2/naujas.php">sukurti nauja saskaita</a>
+        <div class="ml-4"style="margin-left: 100px">
+        <a type="button" class="btn btn-outline-warning" href="http://localhost/phpbootstrap/u2/sarasas.php">Eiti i saskaitu sarasa</a>
         </div>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">A.k.</th>
-                <th scope="col">vardas</th>
-                <th scope="col">pavarde</th>
-                <th scope="col">lesos</th>
-            </tr>
-        </thead>
-        <tbody>
-<?php foreach($bankas as $v) : ?>            
-            <tr>
-                <th scope="row"><?= $v['sask_nr'] ?></th>
-                <td><?= $v['ak'] ?></td>
-                <td><?= $v['vardas'] ?></td>
-                <td><?= $v['pavarde'] ?></td>
-                <td><?= $v['lesos'] ?></td>
-                <td><button type="button" class="btn btn-outline-success" >Prideti lesu</button></td>
-                <td><button type="button" class="btn btn-outline-primary" >Nuskaiciuoti lesas</button></td>
-                <td>
-                    <form action="http://localhost/phpProject/u2/pasalinti.php?id=<?= $v['sask_nr'] ?>" method="post">
-                    <button class="btn btn-outline-danger" type="submit">Pasalinti irasa</button> 
-            </form>
-</td>
-            </tr>
-<?php endforeach ?>            
-        </tbody>
-    </table>
+        <div class="d-flex justify-content-center mt-5">
+
+        <form action ="" method="post">
+        <fieldset>
+            <legend>Sukurti nauja saskaita</legend>
+            <label>Saskaita :</label>
+            <input type="text" name="name" value="<?= $sask_nr ?>" disabled><br><br>
+            <label>vardas :</label>
+            <input type="text" name="name"><br><br>
+            <label>pavarde:</label>
+            <input type="text" name="surname"><br><br>
+            <label>Asm.kodas:</label>
+            <input type="number" name="place_in_row"><br><br>
+            <button class="btn btn-secondary" type="submit">Patvirtinti</button>
+        </fieldset>
+    </form>
+</div>
 </body>
 </html>
 

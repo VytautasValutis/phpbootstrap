@@ -15,12 +15,9 @@ $bankas = unserialize(file_get_contents(__DIR__ . '/users.ser'));
     <title>Sarasas</title>
 </head>
 <body>
-    <div class="d-flex justify-content-center mt-5">
-        <h2> 
-            <img style="width: 30px" src="../image/bank.svg"> Trijų kortų bankelis 
-        </h2>
-    </div>
-        <div class="ml-4">
+    <?php require __DIR__ . '/logo.php' ?>
+
+        <div class="ml-4" style="margin-left: 100px">
         <a type="button" class="btn btn-outline-warning" href="http://localhost/phpbootstrap/u2/naujas.php">sukurti nauja saskaita</a>
         </div>
     <table class="table table-striped">
@@ -40,7 +37,7 @@ $bankas = unserialize(file_get_contents(__DIR__ . '/users.ser'));
                 <td><?= $v['ak'] ?></td>
                 <td><?= $v['vardas'] ?></td>
                 <td><?= $v['pavarde'] ?></td>
-                <td><?= $v['lesos'] ?></td>
+                <td><b><?= $v['lesos'] ?></b></td>
                 <td><button type="button" class="btn btn-outline-success" >Prideti lesu</button></td>
                 <td><button type="button" class="btn btn-outline-primary" >Nuskaiciuoti lesas</button></td>
                 <td>
