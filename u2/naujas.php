@@ -1,9 +1,31 @@
 <?php
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+var_dump($_POST);
+    $user = [
+        'vardas' => $_POST['name'],
+        'pavarde' => $_POST['surname'],
+        'ak' => $_POST['ak'],
+        'sask_nr' => $_POST['sask_nr'],
+        'id' => 0,
+        'lesos' => 0,
+    ];
+
+    $bankas = unserialize(file_get_contents(__DIR__ . '/users.ser'));
+    $bankas[] = $user;
+    $bankas = serialize($bankas);
+    file_put_contents(__DIR__ . '/users.ser', $bankas);
+
+
+    header('Location: http://localhost/phpbootstrap/u2/sarasas.php');
+    die;
+}
+
+
+
     $id = json_decode(file_get_contents(__DIR__ . '/id.json'));
     $id++;
     file_put_contents(__DIR__ . '/id.json', json_encode($id));
     $sask_nr = 'LT3306660'.sprintf('%1$011d', $id);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,13 +48,13 @@
         <fieldset>
             <legend>Sukurti nauja saskaita</legend>
             <label>Saskaita :</label>
-            <input type="text" name="name" value="<?= $sask_nr ?>" disabled><br><br>
+            <input type="text" name="sask_nr" value="<?= $sask_nr ?>" disabled><br><br>
             <label>vardas :</label>
             <input type="text" name="name"><br><br>
             <label>pavarde:</label>
             <input type="text" name="surname"><br><br>
             <label>Asm.kodas:</label>
-            <input type="number" name="place_in_row"><br><br>
+            <input type="number" name="ak"><br><br>
             <button class="btn btn-secondary" type="submit">Patvirtinti</button>
         </fieldset>
     </form>
