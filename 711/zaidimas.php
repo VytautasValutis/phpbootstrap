@@ -21,12 +21,16 @@ if(isset($_GET['go'])) {
             header('Location: http://localhost/phpbootstrap/711/pabaiga.php');
             die;
         } else {
-            header('Location: http://localhost/phpbootstrap/711/zaidimas.php');
+            header('Location: http://localhost/phpbootstrap/711/zaidimas.php?gogo='.$dice);
             die;
         }
         die;
 } else {
-    $dice = 0;
+    if(isset($_GET['gogo'])) {
+        $dice = $_GET['gogo'];
+    } else {
+        $dice = 0;
+    }
     $game = unserialize(file_get_contents(__DIR__ . '/game.ser'));
     if($game['rid2'] < $game['rid1']) {
         $meta = $game['zaid2'];
