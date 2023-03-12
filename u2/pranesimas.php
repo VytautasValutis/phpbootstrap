@@ -34,7 +34,7 @@ if(!isset($_GET['fin'])) {
     <div class="mt-4"style="margin-left: 100px">
         <a type="button" class="btn btn-outline-warning" href="http://localhost/phpbootstrap/u2/sarasas.php">Eiti i sąskaitu sąrašą</a>
         <a type="button" class="btn btn-outline-warning" href="http://localhost/phpbootstrap/u2/naujas.php">Sukurti naują sąskaitą</a>
-        <a type="button" class="btn btn-outline-warning" href="http://localhost/phpbootstrap/u2/pridėti.php">Pridėti lėšų</a>
+        <a type="button" class="btn btn-outline-warning" href="http://localhost/phpbootstrap/u2/prideti.php">Pridėti lėšų</a>
         <a type="button" class="btn btn-outline-warning" href="http://localhost/phpbootstrap/u2/nuskaiciuoti.php">Nuskaičiuoti lėšas</a>
     </div>
     <div class="d-flex justify-content-center mt-5">

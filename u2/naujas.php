@@ -21,7 +21,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $bankas = serialize($bankas);
     file_put_contents(__DIR__ . '/users.ser', $bankas);
 
-    header('Location: http://localhost/phpbootstrap/u2/pranesimas.php');
+    header('Location: http://localhost/phpbootstrap/u2/pranesimas.php?fin=101');
     die;
 }
 // GET METODAS
