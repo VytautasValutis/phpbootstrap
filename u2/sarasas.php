@@ -41,7 +41,7 @@ $bankas = unserialize(file_get_contents(__DIR__ . '/users.ser'));
                 <td><button type="button" class="btn btn-outline-success" >Prideti lesu</button></td>
                 <td><button type="button" class="btn btn-outline-primary" >Nuskaiciuoti lesas</button></td>
                 <td>
-                    <form action="http://localhost/phpProject/u2/pasalinti.php?id=<?= $v['sask_nr'] ?>" method="post">
+                    <form action="http://localhost/phpbootstrap/u2/pasalinti.php?sask_nr=<?= $v['sask_nr'] ?>" method="post">
                     <button class="btn btn-outline-danger" type="submit">Pasalinti irasa</button> 
             </form>
 </td>

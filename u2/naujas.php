@@ -1,11 +1,11 @@
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-var_dump($_POST);
+    $id = json_decode(file_get_contents(__DIR__ . '/id.json'));
     $user = [
         'vardas' => $_POST['name'],
         'pavarde' => $_POST['surname'],
         'ak' => $_POST['ak'],
-        'sask_nr' => $_POST['sask_nr'],
+        'sask_nr' => 'LT3306660'.sprintf('%1$011d', $id),
         'id' => 0,
         'lesos' => 0,
     ];
