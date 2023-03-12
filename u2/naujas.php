@@ -1,11 +1,17 @@
 <?php
+// POST METODAS
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if(!isset($_COOKIE['sask_nr'])) {
+        header('Location: http://localhost/phpbootstrap/u2/pranesimas.php?fin=999');
+        die;
+    }
+    $sask_nr = $_COOKIE['sask_nr'];
     $id = json_decode(file_get_contents(__DIR__ . '/id.json'));
     $user = [
         'vardas' => $_POST['name'],
         'pavarde' => $_POST['surname'],
         'ak' => $_POST['ak'],
-        'sask_nr' => 'LT3306660'.sprintf('%1$011d', $id),
+        'sask_nr' => $sask_nr,
         'id' => 0,
         'lesos' => 0,
     ];
@@ -15,17 +21,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $bankas = serialize($bankas);
     file_put_contents(__DIR__ . '/users.ser', $bankas);
 
-
-    header('Location: http://localhost/phpbootstrap/u2/sarasas.php');
+    header('Location: http://localhost/phpbootstrap/u2/pranesimas.php');
     die;
 }
-
-
-
+// GET METODAS
     $id = json_decode(file_get_contents(__DIR__ . '/id.json'));
     $id++;
     file_put_contents(__DIR__ . '/id.json', json_encode($id));
     $sask_nr = 'LT3306660'.sprintf('%1$011d', $id);
+    setcookie('sask_nr', $sask_nr, time() + 300, "/");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,12 +50,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <form action ="" method="post">
         <fieldset>
-            <legend>Sukurti nauja saskaita</legend>
+            <legend>Sukurti nauja sąskaita</legend>
             <label>Saskaita :</label>
             <input type="text" name="sask_nr" value="<?= $sask_nr ?>" disabled><br><br>
-            <label>vardas :</label>
+            <label>Vardas :</label>
             <input type="text" name="name"><br><br>
-            <label>pavarde:</label>
+            <label>Pavarde:</label>
             <input type="text" name="surname"><br><br>
             <label>Asm.kodas:</label>
             <input type="number" name="ak"><br><br>

@@ -1,7 +1,7 @@
 <?php
+setcookie('sask_nr', 'LT', time() - 300, "/");
+
 $bankas = unserialize(file_get_contents(__DIR__ . '/users.ser'));
-
-
 
 ?>
 <!DOCTYPE html>
@@ -46,10 +46,16 @@ $bankas = unserialize(file_get_contents(__DIR__ . '/users.ser'));
                 <td>
                     <form action="http://localhost/phpbootstrap/u2/nuskaiciuoti.php?sask_nr=<?= $v['sask_nr'] ?>" method="post">
                     <button type="submit" class="btn btn-outline-primary" >Nuskaiciuoti lesas</button>
+                    </form>
                 </td>
                 <td>
                     <form action="http://localhost/phpbootstrap/u2/pasalinti.php?sask_nr=<?= $v['sask_nr'] ?>" method="post">
-                    <button class="btn btn-outline-danger" type="submit">Pasalinti irasa</button> 
+                    <button type="submit" class="btn btn-outline-primary" >Pasalinti irasa</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="http://localhost/phpbootstrap/u2/pasalinti.php?sask_nr=<?= $v['sask_nr'] ?>" method="post">
+                    <button type="submit" class="btn btn-outline-danger">Pasalinti irasa</button> 
                     </form>
                 </td>
             </tr>
