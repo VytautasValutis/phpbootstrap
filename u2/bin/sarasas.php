@@ -46,9 +46,7 @@ $bankas = unserialize(file_get_contents(__DIR__ . '../../db/users.ser'));
                     </form>
                 </td>
                 <td>
-                    <form action="http://localhost/phpbootstrap/u2/pasalinti.php?sask_nr=<?= $v['sask_nr'] ?>" method="post">
-                    <button type="submit" class="btn btn-outline-danger">Pašalinti sąskaitą</button> 
-                    </form>
+                    <a type="button" class="btn btn-outline-danger" href="http://localhost/phpbootstrap/u2/bin/pasalinti.php?sask_nr=<?= $v['sask_nr'] ?>">Pašalinti sąskaitą</a>
                 </td>
             </tr>
 <?php endforeach ?>            
