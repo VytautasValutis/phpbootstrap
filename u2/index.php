@@ -1,6 +1,6 @@
 <?php define('ENTER', true); 
-$msg = 'Sveiki atvykę';
-$msg_col = 'black';
+session_start();
+$_SESSION['msg'] = ['type' => 'default', 'txt' => 'Sveiki atvykę'];
 $menu_home = 'invisible';
 $menu_login = '';
 ?>

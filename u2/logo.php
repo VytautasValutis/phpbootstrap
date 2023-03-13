@@ -1,5 +1,15 @@
 <?php
 defined('ENTER') || die('no entry');
+if(isset($_SESSION['msg'])) {
+    $msg = $_SESSION['msg']['txt'];
+    $msg_col = match($_SESSION['msg']['type']) {
+        'error' => 'red',
+        'ok' => 'blue', 
+        'default' => 'black'
+    };
+    unset($_SESSION['msg']);
+};
+
 ?>
 <div class="d-flex flex-column justify-content-center mt-5">
     <h2 style="margin-left: 100px;"> 
