@@ -49,11 +49,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             margin-top: 20px;
             padding: 20px;
             border: 1px solid black;
-            width: 300px;
+            width: 350px;
         }
         label {
             width: 100px;
             display: inline-block;
+        }
+        div {
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -62,14 +65,22 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         <form action ="" method="post">
         <fieldset>
             <legend>Sukurti nauja sąskaita</legend>
+            <div>
             <label>Saskaita :</label>
             <input type="text" name="sask_nr" value="<?= $sask_nr ?>" disabled><br><br>
+    </div>
+    <div>
             <label>Vardas :</label>
             <input type="text" name="name"><br><br>
+    </div>
+    <div>
             <label>Pavarde:</label>
             <input type="text" name="surname"><br><br>
+    </div>
+    <div>
             <label>Asm.kodas:</label>
             <input type="number" name="ak"><br><br>
+    </div>
             <button class="btn btn-secondary" type="submit">Patvirtinti</button>
         </fieldset>
     </form>

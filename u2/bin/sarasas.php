@@ -22,9 +22,9 @@ $bankas = unserialize(file_get_contents(__DIR__ . '../../db/users.ser'));
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">A.k.</th>
-                <th scope="col">vardas</th>
-                <th scope="col">pavarde</th>
-                <th scope="col">lesos</th>
+                <th scope="col">Vardas</th>
+                <th scope="col">Pavardė</th>
+                <th scope="col">Lėšos</th>
             </tr>
         </thead>
         <tbody>
@@ -36,9 +36,7 @@ $bankas = unserialize(file_get_contents(__DIR__ . '../../db/users.ser'));
                 <td><?= $v['pavarde'] ?></td>
                 <td><b><?= $v['lesos'] ?></b></td>
                 <td>
-                    <form action="http://localhost/phpbootstrap/u2/prideti.php?sask_nr=<?= $v['sask_nr'] ?>" method="post">
-                    <button type="submit" class="btn btn-outline-success" >Prideti lėšų</button>
-                    </form>
+                    <a type="button" class="btn btn-outline-success" href="http://localhost/phpbootstrap/u2/bin/prideti.php?sask_nr=<?= $v['sask_nr'] ?>">Prideti lėšų</a>
                 </td>
                 <td>
                     <form action="http://localhost/phpbootstrap/u2/nuskaiciuoti.php?sask_nr=<?= $v['sask_nr'] ?>" method="post">
