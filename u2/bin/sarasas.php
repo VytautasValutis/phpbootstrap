@@ -3,6 +3,7 @@ session_start();
 $menu_home = '';
 $menu_login = 'invisible';
 $menu_new_acc = '';
+$menu_acc_list = 'invisible';
 $bankas = unserialize(file_get_contents(__DIR__ . '../../db/users.ser'));
 ?>
 <!DOCTYPE html>

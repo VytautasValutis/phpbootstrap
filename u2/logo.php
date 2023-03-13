@@ -25,5 +25,6 @@ if(isset($_SESSION['msg'])) {
     <a type="button" class="btn btn-outline-warning <?= $menu_login ?>" href="http://localhost/phpbootstrap/u2/login/">Login</a>
     <a type="button" class="btn btn-outline-warning <?= $menu_home ?>" href="http://localhost/phpbootstrap/u2/">Pradinis puslapis</a>
     <a type="button" class="btn btn-outline-warning <?= $menu_new_acc ?>" href="http://localhost/phpbootstrap/u2/bin/naujas.php">Sukurti naują sąskaitą</a>
+    <a type="button" class="btn btn-outline-warning <?= $menu_acc_list ?>" href="http://localhost/phpbootstrap/u2/bin/sarasas.php">Eiti į sąskaitų sąrašą</a>
     </div>
 </div>
