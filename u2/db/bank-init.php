@@ -71,3 +71,5 @@ foreach(range(0,14) as $i) {
 }
 $bankas = serialize($bankas);
 file_put_contents(__DIR__ . '/users.ser', $bankas);
+
+echo 'All Ok';

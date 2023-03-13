@@ -50,11 +50,6 @@ $bankas = unserialize(file_get_contents(__DIR__ . '/users.ser'));
                 </td>
                 <td>
                     <form action="http://localhost/phpbootstrap/u2/pasalinti.php?sask_nr=<?= $v['sask_nr'] ?>" method="post">
-                    <button type="submit" class="btn btn-outline-primary" >Pasalinti irasa</button>
-                    </form>
-                </td>
-                <td>
-                    <form action="http://localhost/phpbootstrap/u2/pasalinti.php?sask_nr=<?= $v['sask_nr'] ?>" method="post">
                     <button type="submit" class="btn btn-outline-danger">Pasalinti irasa</button> 
                     </form>
                 </td>
