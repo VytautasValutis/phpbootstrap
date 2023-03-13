@@ -3,6 +3,7 @@ session_start();
 $_SESSION['msg'] = ['type' => 'default', 'txt' => 'Sveiki atvykę'];
 $menu_home = 'invisible';
 $menu_login = '';
+$menu_new_acc = 'invisible';
 ?>
 <!DOCTYPE html>
 <html lang="en">

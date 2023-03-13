@@ -4,6 +4,7 @@ $msg = 'Login puslapis';
 $msg_col = 'black';
 $menu_home = '';
 $menu_login = 'invisible';
+$menu_new_acc = 'invisible';
 $wrong_n = '';
 
 session_start();

@@ -1,5 +1,5 @@
 <?php
-defined('ENTER') || die('no entry');
+// defined('ENTER') || die('no entry');
 if(isset($_SESSION['msg'])) {
     $msg = $_SESSION['msg']['txt'];
     $msg_col = match($_SESSION['msg']['type']) {
@@ -24,5 +24,6 @@ if(isset($_SESSION['msg'])) {
     <div class="ml-4" style="margin-left: 100px">
     <a type="button" class="btn btn-outline-warning <?= $menu_login ?>" href="http://localhost/phpbootstrap/u2/login/">Login</a>
     <a type="button" class="btn btn-outline-warning <?= $menu_home ?>" href="http://localhost/phpbootstrap/u2/">Pradinis puslapis</a>
+    <a type="button" class="btn btn-outline-warning <?= $menu_new_acc ?>" href="http://localhost/phpbootstrap/u2/bin/naujas.php">Sukurti naują sąskaitą</a>
     </div>
 </div>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 // POST METODAS
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     if(!isset($_COOKIE['sask_nr'])) {
@@ -37,12 +38,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <title>Sarasas</title>
 </head>
 <body>
-    <?php require __DIR__ . '/logo.php' ?>
+    <?php require __DIR__ . '../../logo.php' ?>
         <div class="ml-4"style="margin-left: 100px">
         <a type="button" class="btn btn-outline-warning" href="http://localhost/phpbootstrap/u2/sarasas.php">Eiti i saskaitu sarasa</a>
         </div>

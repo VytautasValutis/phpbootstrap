@@ -1,8 +1,9 @@
 <?php
-setcookie('sask_nr', 'LT', time() - 300, "/");
-
-$bankas = unserialize(file_get_contents(__DIR__ . '/users.ser'));
-
+session_start();
+$menu_home = '';
+$menu_login = 'invisible';
+$menu_new_acc = '';
+$bankas = unserialize(file_get_contents(__DIR__ . '../../db/users.ser'));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,16 +11,11 @@ $bankas = unserialize(file_get_contents(__DIR__ . '/users.ser'));
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <title>Sarasas</title>
 </head>
 <body>
-    <?php require __DIR__ . '/logo.php' ?>
-
-        <div class="ml-4" style="margin-left: 100px">
-        <a type="button" class="btn btn-outline-warning" href="http://localhost/phpbootstrap/u2/naujas.php">sukurti nauja saskaita</a>
-        </div>
+    <?php require __DIR__ . '../../logo.php' ?>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -40,17 +36,17 @@ $bankas = unserialize(file_get_contents(__DIR__ . '/users.ser'));
                 <td><b><?= $v['lesos'] ?></b></td>
                 <td>
                     <form action="http://localhost/phpbootstrap/u2/prideti.php?sask_nr=<?= $v['sask_nr'] ?>" method="post">
-                    <button type="submit" class="btn btn-outline-success" >Prideti lesu</button>
+                    <button type="submit" class="btn btn-outline-success" >Prideti lėšų</button>
                     </form>
                 </td>
                 <td>
                     <form action="http://localhost/phpbootstrap/u2/nuskaiciuoti.php?sask_nr=<?= $v['sask_nr'] ?>" method="post">
-                    <button type="submit" class="btn btn-outline-primary" >Nuskaiciuoti lesas</button>
+                    <button type="submit" class="btn btn-outline-primary" >Nuskaičiuoti lėšas</button>
                     </form>
                 </td>
                 <td>
                     <form action="http://localhost/phpbootstrap/u2/pasalinti.php?sask_nr=<?= $v['sask_nr'] ?>" method="post">
-                    <button type="submit" class="btn btn-outline-danger">Pasalinti irasa</button> 
+                    <button type="submit" class="btn btn-outline-danger">Pašalinti sąskaitą</button> 
                     </form>
                 </td>
             </tr>
