@@ -1,4 +1,9 @@
-<?php define('ENTER', true) ?>
+<?php define('ENTER', true); 
+$msg = 'Sveiki atvykę';
+$msg_col = 'black';
+$menu_home = 'invisible';
+$menu_login = '';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,5 +1,10 @@
 <?php
 define('ENTER', true);
+$msg = 'Login puslapis';
+$msg_col = 'black';
+$menu_home = '';
+$menu_login = 'invisible';
+
 //POST metodas
 session_start();
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -27,11 +32,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <title>Login</title>
     <style>
         form {
-            margin: 50px;
+            margin-left: 100px;
+            margin-top: 50px;
             padding: 20px;
             border: 1px solid black;
             width: 300px;
@@ -46,30 +52,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     </style>    
 </head>
 <body>
-    <?php
-        if(isset($_SESSION['msg'])) {
-            $msg = $_SESSION['msg'];
-            unset($_SESSION['msg']);
-            $color = match($msg['type']) {
-                'error' => 'red',
-                'ok' => 'blue', 
-                'default' => 'gray'
-            };
-        };
-    ?>
-    <?php if(isset($msg)) : ?>
-        <h2 style="color: red">
-            viskas blogai
-        </h2>
-    <?php endif ?>    
     <?php require(__DIR__ . '/../logo.php') ?>
     <form action="" method="post">
         <div>
-            <label>Name:</label>
+            <label>Vardas:</label>
             <input type="text" name="name">
         </div>
         <div>
-            <label>Password:</label>
+            <label>Slaptažodis:</label>
             <input type="password" name="psw">
         </div>
         <div>
