@@ -7,7 +7,6 @@ $menu_acc_list = 0;
 $msg = 'ok';
 $msg = 'Banko sąskaitų sąrašas';
 $bankas = unserialize(file_get_contents(__DIR__ . '../../db/users.ser'));
-// $_SESSION['msg'] = ['type' => 'ok', 'txt' => 'Sąskaita '.$id.' sėkmingai pašalinta'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,9 +41,7 @@ $bankas = unserialize(file_get_contents(__DIR__ . '../../db/users.ser'));
                     <a type="button" class="btn btn-outline-success" href="./prideti.php?sask_nr=<?= $v['sask_nr'] ?>">Prideti lėšų</a>
                 </td>
                 <td>
-                    <form action="http://localhost/phpbootstrap/u2/nuskaiciuoti.php?sask_nr=<?= $v['sask_nr'] ?>" method="post">
-                    <button type="submit" class="btn btn-outline-primary" >Nuskaičiuoti lėšas</button>
-                    </form>
+                    <a type="button" class="btn btn-outline-primary" href="./nuskaiciuoti.php?sask_nr=<?= $v['sask_nr'] ?>">Nuskaičiuoti lėšas</a>
                 </td>
                 <td>
                     <form action="./pasalinti.php?sask_nr=<?= $v['sask_nr'] ?>" method="post">
