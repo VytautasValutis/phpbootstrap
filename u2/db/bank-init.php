@@ -1,10 +1,10 @@
 <?php
-$vard = ["Berlynn","Erin","Byron","Jasper","Murphy",
-        "Abraham","Lane","Jax","Julian","Kate",
-        "Dustin","Dante","Will","Viola","Blair"];
-$pav = ["Miles","Lamb","Cox","Lindsey","Blackwell",
-        "Hogan","Pace","Mcmahon","Hensley","Ramos",
-        "Golden","Hale","Branch","Skinner","Mclaughlin"];   
+$vard = ['Berlynn','Erin','Byron','Jasper','Murphy',
+        'Abraham','Lane','Jax','Julian','Kate',
+        'Dustin','Dante','Will','Viola','Blair'];
+$pav = ['Miles','Lamb','Cox','Lindsey','Blackwell',
+        'Hogan','Pace','Mcmahon','Hensley','Ramos',
+        'Golden','Hale','Branch','Skinner','Mclaughlin'];   
         
 function akgen() {
     $met = rand(1901,2007);

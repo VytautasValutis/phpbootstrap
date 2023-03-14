@@ -12,8 +12,8 @@ $wrong_n = '';
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sask_nr = $_SESSION['account'];
     $user = [
-        'vardas' => $_POST['name'],
-        'pavarde' => $_POST['surname'],
+        'vardas' => ucfirst($_POST['name']),
+        'pavarde' => ucfirst($_POST['surname']),
         'ak' => $_POST['ak'],
         'sask_nr' => $sask_nr,
         'id' => 0,
