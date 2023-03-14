@@ -26,6 +26,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $find = false;
     foreach($bankas as $acc) {
         if($acc['sask_nr'] == $sask_nr) {
+            if($suma > $acc['lesos']) {
+                $_SESSION['msg'] = ['type' => 'error', 'txt' => 'Nepakanka lėšų operacijai atlikti'];
+                header('Location: ./nuskaiciuoti.php?sask_nr='.$sask_nr);
+                die;
+            }
             $acc['lesos'] -= $suma;
             $bankas = array_filter($bankas, fn($bnk) => $bnk['sask_nr'] != $sask_nr);
             $bankas[] = $acc;
