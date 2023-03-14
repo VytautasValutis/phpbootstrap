@@ -1,9 +1,9 @@
 <?php
 session_start();
-$menu_home = '';
-$menu_login = 'invisible';
-$menu_new_acc = '';
-$menu_acc_list = '';
+$menu_home = 1;
+$menu_login = 0;
+$menu_new_acc = 1;
+$menu_acc_list = 1;
 $msg = 'Pridėti lėšų prie sąskaitos';
 $msg_col = 'black';
 if($_SERVER['REQUEST_METHOD'] == 'POST') {

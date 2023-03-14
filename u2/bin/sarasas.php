@@ -1,10 +1,13 @@
 <?php
 session_start();
-$menu_home = '';
-$menu_login = 'invisible';
-$menu_new_acc = '';
-$menu_acc_list = 'invisible';
+$menu_home = 1;
+$menu_login = 0;
+$menu_new_acc = 1;
+$menu_acc_list = 0;
+$msg = 'ok';
+$msg = 'Banko sąskaitų sąrašas';
 $bankas = unserialize(file_get_contents(__DIR__ . '../../db/users.ser'));
+// $_SESSION['msg'] = ['type' => 'ok', 'txt' => 'Sąskaita '.$id.' sėkmingai pašalinta'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +47,9 @@ $bankas = unserialize(file_get_contents(__DIR__ . '../../db/users.ser'));
                     </form>
                 </td>
                 <td>
-                    <a type="button" class="btn btn-outline-danger" href="http://localhost/phpbootstrap/u2/bin/pasalinti.php?sask_nr=<?= $v['sask_nr'] ?>">Pašalinti sąskaitą</a>
+                    <form action="./pasalinti.php?sask_nr=<?= $v['sask_nr'] ?>" method="post">
+                    <button type="submit" class="btn btn-outline-danger">Pašalinti sąskaitą</button>
+                    </form>
                 </td>
             </tr>
 <?php endforeach ?>            

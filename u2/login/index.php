@@ -2,10 +2,10 @@
 define('ENTER', true);
 $msg = 'Login puslapis';
 $msg_col = 'black';
-$menu_home = '';
-$menu_login = 'invisible';
-$menu_new_acc = 'invisible';
-$menu_acc_list = 'invisible';
+$menu_home = 1;
+$menu_login = 0;
+$menu_new_acc = 0;
+$menu_acc_list = 0;
 $wrong_n = '';
 
 session_start();

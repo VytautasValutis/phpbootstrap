@@ -3,10 +3,10 @@ session_start();
 define('ENTER', true);
 $msg = 'Kuriama nauja sąskaita';
 $msg_col = 'black';
-$menu_home = '';
-$menu_login = '';
-$menu_new_acc = 'invisible';
-$menu_acc_list = '';
+$menu_home = 1;
+$menu_login = 1;
+$menu_new_acc = 0;
+$menu_acc_list = 1;
 $wrong_n = '';
 // POST METODAS
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -79,7 +79,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
     <div>
             <label>Asm.kodas:</label>
-            <input type="number" name="ak"><br><br>
+            <input type="text" name="ak"><br><br>
     </div>
             <button class="btn btn-secondary" type="submit">Patvirtinti</button>
         </fieldset>

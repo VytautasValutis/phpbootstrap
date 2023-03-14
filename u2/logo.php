@@ -22,9 +22,17 @@ if(isset($_SESSION['msg'])) {
     <p style="color: <?= $msg_col ?>"><?= $msg ?></p>
     </div>
     <div class="ml-4" style="margin-left: 100px">
-    <a type="button" class="btn btn-outline-warning <?= $menu_login ?>" href="http://localhost/phpbootstrap/u2/login/">Login</a>
-    <a type="button" class="btn btn-outline-warning <?= $menu_home ?>" href="http://localhost/phpbootstrap/u2/">Pradinis puslapis</a>
-    <a type="button" class="btn btn-outline-warning <?= $menu_new_acc ?>" href="http://localhost/phpbootstrap/u2/bin/naujas.php">Sukurti naują sąskaitą</a>
-    <a type="button" class="btn btn-outline-warning <?= $menu_acc_list ?>" href="http://localhost/phpbootstrap/u2/bin/sarasas.php">Eiti į sąskaitų sąrašą</a>
+    <?php if($menu_login) : ?>
+    <a type="button" class="btn btn-outline-warning" href="http://localhost/phpbootstrap/u2/login/">Login</a>
+    <?php endif ?>
+    <?php if($menu_home) : ?>
+    <a type="button" class="btn btn-outline-warning" href="http://localhost/phpbootstrap/u2/">Pradinis puslapis</a>
+    <?php endif ?>
+    <?php if($menu_new_acc) : ?>
+    <a type="button" class="btn btn-outline-warning" href="http://localhost/phpbootstrap/u2/bin/naujas.php">Sukurti naują sąskaitą</a>
+    <?php endif ?>
+    <?php if($menu_acc_list) : ?>
+    <a type="button" class="btn btn-outline-warning" href="http://localhost/phpbootstrap/u2/bin/sarasas.php">Eiti į sąskaitų sąrašą</a>
+    <?php endif ?>
     </div>
 </div>

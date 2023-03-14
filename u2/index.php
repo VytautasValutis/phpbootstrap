@@ -1,9 +1,10 @@
 <?php define('ENTER', true); 
 session_start();
 $_SESSION['msg'] = ['type' => 'default', 'txt' => 'Sveiki atvykę'];
-$menu_home = 'invisible';
-$menu_login = '';
-$menu_new_acc = 'invisible';
+$menu_home = 0;
+$menu_login = 1;
+$menu_new_acc = 0;
+$menu_acc_list = 0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
