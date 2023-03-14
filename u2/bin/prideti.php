@@ -27,8 +27,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     foreach($bankas as $acc) {
         if($acc['sask_nr'] == $sask_nr) {
             $acc['lesos'] += $suma;
-            $find = true;
-            break;
+            $bankas = array_filter($bankas, fn($bnk) => $bnk['sask_nr'] != $sask_nr);
+            $bankas[] = $acc;
+            $bankas = serialize($bankas);
+            file_put_contents(__DIR__ . '/../db/users.ser', $bankas);
+            // $bankas[] = $acc;
+            $_SESSION['msg'] = ['type' => 'ok', 'txt' => 'Saskaita '.$sask_nr.' papildyta '.$suma.' lėšų'];
+            header('Location: ./sarasas.php');
+            die;
         }
     }
     if(!$find) {
@@ -36,12 +42,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         header('Location: ./sarasas.php');
         die;
     }
-    $bankas[] = $acc;
-    $bankas = serialize($bankas);
-    file_put_contents(__DIR__ . '/../db/users.ser', $bankas);
-    $_SESSION['msg'] = ['type' => 'ok', 'txt' => 'Saskaita '.$sask_nr.' papildyta '.$suma.' lėšų'];
-    header('Location: ./sarasas.php');
-    die;
 }
 // GET Metodas
 $bankas = unserialize(file_get_contents(__DIR__ . '/../db/users.ser'));
@@ -57,7 +57,6 @@ if(!$find) {
     header('Location: ./sarasas.php');
     die;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
