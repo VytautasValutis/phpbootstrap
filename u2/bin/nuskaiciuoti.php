@@ -31,7 +31,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $bankas[] = $acc;
             $bankas = serialize($bankas);
             file_put_contents(__DIR__ . '/../db/users.ser', $bankas);
-            // $bankas[] = $acc;
             $_SESSION['msg'] = ['type' => 'ok', 'txt' => 'Nuo sąskaitos '.$sask_nr.' nuskaičiuota '.$suma.' lėšų'];
             header('Location: ./sarasas.php');
             die;
