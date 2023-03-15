@@ -35,6 +35,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         header('Location: ./naujas.php');
         die;
     }
+    $bankas = unserialize(file_get_contents(__DIR__ . '/../db/users.ser'));
+    foreach($bankas as $acc) {
+        if($acc['ak'] == $_POST['ak']) {
+            $_SESSION['msg'] = ['type' => 'error', 'txt' => 'Dubliuojasi asmens kodas'];
+            header('Location: ./naujas.php');
+            die;
+        }
+    }
     $_SESSION['w_name'] = '';
     $_SESSION['w_surname'] = '';
     $_SESSION['w_ak'] = '';
@@ -48,7 +56,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         'lesos' => 0,
     ];
 
-    $bankas = unserialize(file_get_contents(__DIR__ . '/../db/users.ser'));
     $bankas[] = $user;
     $bankas = serialize($bankas);
     file_put_contents(__DIR__ . '/../db/users.ser', $bankas);
