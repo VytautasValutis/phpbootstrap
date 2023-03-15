@@ -21,6 +21,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     };
 
     $suma = (int) $_POST['suma'];
+    if($suma < 0) {
+        $_SESSION['msg'] = ['type' => 'error', 'txt' => 'Suma negali būti neigiamas skaičius'];
+        header('Location: ./prideti.php?sask_nr='.$sask_nr);
+        die;
+    }
     // toliau turi eiti sumos validacija
     $bankas = unserialize(file_get_contents(__DIR__ . '/../db/users.ser'));
     $find = false;
