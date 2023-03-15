@@ -21,7 +21,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     };
 
     $suma = (int) $_POST['suma'];
-    // toliau turi eiti sumos validacija
+    if($suma < 0) {
+        $_SESSION['msg'] = ['type' => 'error', 'txt' => 'Suma negali būti neigiamas skaičius'];
+        header('Location: ./nuskaiciuoti.php?sask_nr='.$sask_nr);
+        die;
+    }
     $bankas = unserialize(file_get_contents(__DIR__ . '/../db/users.ser'));
     $find = false;
     foreach($bankas as $acc) {
