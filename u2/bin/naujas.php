@@ -59,6 +59,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $bankas[] = $user;
     $bankas = serialize($bankas);
     file_put_contents(__DIR__ . '/../db/users.ser', $bankas);
+    $_SESSION['sort'] = 'A2';
     $_SESSION['msg'] = ['type' => 'ok', 'txt' => 'Sukurta nauja sąskaita Nr.'.$sask_nr];
     header('Location: http://localhost/phpbootstrap/u2/bin/sarasas.php');
     die;

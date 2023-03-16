@@ -4,11 +4,16 @@ $menu_home = 1;
 $menu_login = 0;
 $menu_new_acc = 1;
 $menu_acc_list = 0;
+$_SESSION['w_name'] = '';
+$_SESSION['w_surname'] = '';
+$_SESSION['w_ak'] = '';
+$_SESSION['w_sask_nr'] = '';
 $msg = 'ok';
 $msg = 'Banko sąskaitų sąrašas';
 $bankas = unserialize(file_get_contents(__DIR__ . '../../db/users.ser'));
 if(isset($_GET['sort'])){
-    if($_GET['sort'] == 'A') {
+    $sort = $_GET['sort'];
+    if($sort == 'A') { 
         if($_SESSION['sort'] == 'A1') {
             $_SESSION['sort'] = 'A2';
             $a_sort = mb_chr(0x21D1);
@@ -21,7 +26,7 @@ if(isset($_GET['sort'])){
     } else {
         $a_sort = '';
     }
-    if($_GET['sort'] == 'D') {
+    if($sort == 'D') {
         if($_SESSION['sort'] == 'D1') {
             $_SESSION['sort'] = 'D2';
             $d_sort = mb_chr(0x21D3);
@@ -34,7 +39,7 @@ if(isset($_GET['sort'])){
     } else {
         $d_sort = '';
     }
-    if($_GET['sort'] == 'E') {
+    if($sort == 'E') {
         if($_SESSION['sort'] == 'E1') {
             $_SESSION['sort'] = 'E2';
             $e_sort = mb_chr(0x21D3);
@@ -48,11 +53,41 @@ if(isset($_GET['sort'])){
         $e_sort = '';
     }
 } else {
-    $a_sort = '';
-    $e_sort = '';
-    $d_sort = mb_chr(0x21D1);
-    $_SESSION['sort'] = 'D1';
-    usort($bankas, fn($a, $b) => $a['pavarde'] <=> $b['pavarde']);
+    if(isset($_SESSION['sort'])) {
+        $a_sort = '';
+        $d_sort = '';
+        $e_sort = '';
+        if($_SESSION['sort'] == 'A1') {
+            $a_sort = mb_chr(0x21D3);
+            usort($bankas, fn($a, $b) => $a['sask_nr'] <=> $b['sask_nr']);
+        }
+        if($_SESSION['sort'] == 'A2') {
+            $a_sort = mb_chr(0x21D1);
+            usort($bankas, fn($a, $b) => $b['sask_nr'] <=> $a['sask_nr']);
+        }
+        if($_SESSION['sort'] == 'D1') {
+            $d_sort = mb_chr(0x21D3);
+            usort($bankas, fn($a, $b) => $a['pavarde'] <=> $b['pavarde']);
+        }
+        if($_SESSION['sort'] == 'D2') {
+            $d_sort = mb_chr(0x21D1);
+            usort($bankas, fn($a, $b) => $b['pavarde'] <=> $a['pavarde']);
+        }
+        if($_SESSION['sort'] == 'E1') {
+            $e_sort = mb_chr(0x21D1);
+            usort($bankas, fn($a, $b) => $a['lesos'] <=> $b['lesos']);
+        }
+        if($_SESSION['sort'] == 'E2') {
+            $e_sort = mb_chr(0x21D3);
+            usort($bankas, fn($a, $b) => $b['lesos'] <=> $a['lesos']);
+        }
+    } else {
+        $a_sort = '';
+        $e_sort = '';
+        $d_sort = mb_chr(0x21D1);
+        $_SESSION['sort'] = 'D1';
+        usort($bankas, fn($a, $b) => $a['pavarde'] <=> $b['pavarde']);
+    }
 }
 
 ?>
