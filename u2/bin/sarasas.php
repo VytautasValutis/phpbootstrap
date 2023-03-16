@@ -92,13 +92,13 @@ if(isset($_GET['sort'])){
                 <td><?= $v['pavarde'] ?></td>
                 <td><b><?= $v['lesos'] ?></b></td>
                 <td>
-                    <a type="button" class="btn btn-outline-success" href="./prideti.php?sask_nr=<?= $v['sask_nr'] ?>">Prideti lėšų</a>
+                    <a type="button" class="btn btn-outline-success" href="./prideti.php?id=<?= $v['id'] ?>">Prideti lėšų</a>
                 </td>
                 <td>
-                    <a type="button" class="btn btn-outline-primary" href="./nuskaiciuoti.php?sask_nr=<?= $v['sask_nr'] ?>">Nuskaičiuoti lėšas</a>
+                    <a type="button" class="btn btn-outline-primary" href="./nuskaiciuoti.php?id=<?= $v['id'] ?>">Nuskaičiuoti lėšas</a>
                 </td>
                 <td>
-                    <form action="./pasalinti.php?sask_nr=<?= $v['sask_nr'] ?>" method="post">
+                    <form action="./pasalinti.php?id=<?= $v['id'] ?>" method="post">
                     <button type="submit" class="btn btn-outline-danger">Pašalinti sąskaitą</button>
                     </form>
                 </td>

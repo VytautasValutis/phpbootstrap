@@ -52,7 +52,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         'pavarde' => ucfirst($_POST['surname']),
         'ak' => $_POST['ak'],
         'sask_nr' => $sask_nr,
-        'id' => 0,
+        'id' => md5($sask_nr),
         'lesos' => 0,
     ];
 

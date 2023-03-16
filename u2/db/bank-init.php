@@ -59,12 +59,13 @@ foreach(range(0,14) as $i) {
     $id = json_decode(file_get_contents(__DIR__ . '/id.json'));
     $id++;
     file_put_contents(__DIR__ . '/id.json', json_encode($id));
+    $sask_nr = 'LT3306660'.sprintf('%1$011d', $id);
     $user = [
         'vardas' => $vard[$i],
         'pavarde' => $pav[$i],
         'ak' => akgen(),
-        'sask_nr' => 'LT3306660'.sprintf('%1$011d', $id),
-        'id' => 0,
+        'sask_nr' => $sask_nr,
+        'id' => md5($sask_nr),
         'lesos' => rand(275, 3566),
     ];
     $bankas[] = $user;

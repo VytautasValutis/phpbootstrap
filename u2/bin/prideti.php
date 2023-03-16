@@ -6,53 +6,46 @@ $menu_new_acc = 1;
 $menu_acc_list = 1;
 $msg = 'Pridėti lėšų prie sąskaitos';
 $msg_col = 'black';
-if(!isset($_GET['sask_nr'])) {
+if(!isset($_GET['id'])) {
     $_SESSION['msg'] = ['type' => 'error', 'txt' => 'Nenurodytas sąskaitos Nr.'];
     header('Location: ./sarasas.php');
     die;
 };
-$sask_nr = $_GET['sask_nr'];
+$id = $_GET['id'];
 // POST Metodas
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     if(!isset($_POST['suma'])) {
         $_SESSION['msg'] = ['type' => 'error', 'txt' => 'Nenurodytos lėšos'];
-        header('Location: ./prideti.php?sask_nr='.$sask_nr);
+        header('Location: ./prideti.php?id='.$id);
         die;
     };
 
     $suma = (int) $_POST['suma'];
     if($suma < 0) {
         $_SESSION['msg'] = ['type' => 'error', 'txt' => 'Suma negali būti neigiamas skaičius'];
-        header('Location: ./prideti.php?sask_nr='.$sask_nr);
+        header('Location: ./prideti.php?id='.$id);
         die;
     }
-    // toliau turi eiti sumos validacija
     $bankas = unserialize(file_get_contents(__DIR__ . '/../db/users.ser'));
     $find = false;
     foreach($bankas as $acc) {
-        if($acc['sask_nr'] == $sask_nr) {
+        if($acc['id'] == $id) {
             $acc['lesos'] += $suma;
-            $bankas = array_filter($bankas, fn($bnk) => $bnk['sask_nr'] != $sask_nr);
+            $bankas = array_filter($bankas, fn($bnk) => $bnk['id'] !== $id);
             $bankas[] = $acc;
             $bankas = serialize($bankas);
             file_put_contents(__DIR__ . '/../db/users.ser', $bankas);
-            // $bankas[] = $acc;
-            $_SESSION['msg'] = ['type' => 'ok', 'txt' => 'Saskaita '.$sask_nr.' papildyta '.$suma.' lėšų'];
+            $_SESSION['msg'] = ['type' => 'ok', 'txt' => 'Saskaita '.$acc['sask_nr'].' papildyta '.$suma.' lėšų'];
             header('Location: ./sarasas.php');
             die;
         }
-    }
-    if(!$find) {
-        $_SESSION['msg'] = ['type' => 'error', 'txt' => 'Neteisingai nurodyta sąskaita'];
-        header('Location: ./sarasas.php');
-        die;
     }
 }
 // GET Metodas
 $bankas = unserialize(file_get_contents(__DIR__ . '/../db/users.ser'));
 $find = false;
 foreach($bankas as $acc) {
-    if($acc['sask_nr'] == $sask_nr) {
+    if($acc['id'] === $id) {
         $find = true;
         break;
     }
@@ -95,7 +88,7 @@ if(!$find) {
             <legend>Pridėti lėšų į sąskaitą</legend>
             <div>
                 <label>Sąskaita :</label>
-                <input type="text" name="sask_nr" value="<?= $sask_nr ?>" disabled><br><br>
+                <input type="text" name="sask_nr" value="<?= $acc['sask_nr'] ?>" disabled><br><br>
             </div>
             <div>
                 <label>Vardas :</label>
